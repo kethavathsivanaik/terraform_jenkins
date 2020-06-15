@@ -144,7 +144,6 @@ locals {
     s3_origin_id = "s3_origin"
 }
 
-
 // S3 object upload
 
 resource "aws_s3_bucket_object" "image_object" {
@@ -154,14 +153,19 @@ resource "aws_s3_bucket_object" "image_object" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini.jpg"
-  source = "./resource "aws_s3_bucket_object" "image_object1" {
+  source = "./lambo.jpg"
+}
+
+resource "aws_s3_bucket_object" "image_object1" {
   depends_on = [
     aws_s3_bucket.s3buckettask1
   ]
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini1.jpg"
-  source = "./
+  source = "./lambo1.jpg"
+}
+
 resource "aws_s3_bucket_object" "image_object2" {
   depends_on = [
     aws_s3_bucket.s3buckettask1
@@ -169,7 +173,9 @@ resource "aws_s3_bucket_object" "image_object2" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini2.jpg"
-  source = "./
+  source = "./lambo2.jpg"
+}
+
 
 resource "aws_s3_bucket_object" "image_object3" {
   depends_on = [
@@ -178,7 +184,9 @@ resource "aws_s3_bucket_object" "image_object3" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini3.jpg"
-  source = "./
+  source = "./lambo3.jpg"
+}
+
 //create a cloudfront using s3
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
