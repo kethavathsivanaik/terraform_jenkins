@@ -253,7 +253,7 @@ resource "null_resource" "cloudfront_url"{
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("./keypair_docker_webserver.pem")
+    private_key = file("./mytest/keypair_docker_webserver.pem")
     host     = aws_instance.AppInstance.public_ip
   }
   provisioner "remote-exec" {
