@@ -7,7 +7,7 @@ provider "aws" {
 //Create KeyPair
 resource "aws_key_pair" "create_keypair" {
   key_name   = "Task1_keypair"
-  public_key = file("./public_key")
+  public_key = file("./mytesk/public_key")
 } 
 
 
@@ -60,7 +60,7 @@ resource "aws_instance" "AppInstance" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("./keypair_docker_webserver.pem")
+    private_key = file("./mytest/keypair_docker_webserver.pem")
     host        = aws_instance.AppInstance.public_ip
   }
 
@@ -117,7 +117,7 @@ resource "null_resource" "Remote" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("./keypair_docker_webserver.pem")
+    private_key = file("./mytest/keypair_docker_webserver.pem")
     host     = aws_instance.AppInstance.public_ip
   }
   provisioner "remote-exec" {
@@ -153,7 +153,7 @@ resource "aws_s3_bucket_object" "image_object" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini.jpg"
-  source = "./lambo.jpg"
+  source = "./mytest/lambo.jpg"
 }
 
 resource "aws_s3_bucket_object" "image_object1" {
@@ -163,7 +163,7 @@ resource "aws_s3_bucket_object" "image_object1" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini1.jpg"
-  source = "./lambo1.jpg"
+  source = "./mytest/lambo1.jpg"
 }
 
 resource "aws_s3_bucket_object" "image_object2" {
@@ -173,7 +173,7 @@ resource "aws_s3_bucket_object" "image_object2" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini2.jpg"
-  source = "./lambo2.jpg"
+  source = "./mytest/lambo2.jpg"
 }
 
 
@@ -184,7 +184,7 @@ resource "aws_s3_bucket_object" "image_object3" {
   bucket = "s3buckettask1"
   acl    = "public-read"
   key    = "lamborgini3.jpg"
-  source = "./lambo3.jpg"
+  source = "./mytest/lambo3.jpg"
 }
 
 //create a cloudfront using s3
